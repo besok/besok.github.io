@@ -16,6 +16,8 @@ buildExpired = false
 
 [params]
   description = "Notes on robotics, industrial systems, and the software in between"
+  favicon = "/favicon.svg"
+  hideMadeWithLine = true
 
 [menus]
   [[menus.main]]
@@ -38,6 +40,6 @@ buildExpired = false
   [markup.highlight]
     noClasses = true
     codeFences = true
-    guessSyntax = true
+    guessSyntax = false
     lineNos = false
-    style = "monokai"
+    style = "github"

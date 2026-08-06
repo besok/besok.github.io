@@ -1,0 +1,25 @@
+<script src="/highlight.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    document.querySelectorAll('code.language-f-tree').forEach(function(el) {
+      hljs.highlightElement(el);
+    });
+  });
+</script>
+<style>
+  pre code.language-f-tree {
+    display: block;
+    padding: 1rem;
+    overflow-x: auto;
+    background-color: #f6f8fa;
+    color: #24292e;
+  }
+  code.language-f-tree .hljs-keyword { color: #d73a49; }
+  code.language-f-tree .hljs-literal { color: #005cc5; }
+  code.language-f-tree .hljs-number { color: #005cc5; }
+  code.language-f-tree .hljs-string { color: #032f62; }
+  code.language-f-tree .hljs-comment { color: #6a737d; font-style: italic; }
+  code.language-f-tree .hljs-variable\.constant { color: #6f42c1; }
+  code.language-f-tree .hljs-punctuation { color: #24292e; }
+  code.language-f-tree .hljs-title\.function\.invoke { color: #6f42c1; }
+</style>
