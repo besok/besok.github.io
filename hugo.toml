@@ -1,7 +1,7 @@
 baseURL = "https://besok.github.io/"
 locale = "en-us"
-title = "Boris Zhguchev"
-theme = "PaperMod"
+title = "besok"
+theme = "hugo-bearblog"
 
 enableRobotsTXT = true
 buildDrafts = false
@@ -15,24 +15,7 @@ buildExpired = false
   disableXML = true
 
 [params]
-  env = "production"
-  description = "Personal blog of Boris Zhguchev"
-  defaultTheme = "auto"
-  ShowReadingTime = true
-  ShowShareButtons = false
-  ShowPostNavLinks = true
-  ShowBreadCrumbs = true
-  ShowCodeCopyButtons = true
-  ShowWordCount = true
-  ShowRssButtonInSectionTermList = true
-
-  [params.homeInfoParams]
-    Title = "Hi 👋"
-    Content = "Welcome to my personal blog."
-
-  [[params.socialIcons]]
-    name = "github"
-    url = "https://github.com/besok"
+  description = "Notes on robotics, industrial systems, and the software in between"
 
 [menus]
   [[menus.main]]
@@ -46,17 +29,14 @@ buildExpired = false
     url = "/tags/"
     weight = 20
   [[menus.main]]
-    identifier = "search"
-    name = "Search"
-    url = "/search/"
+    identifier = "about"
+    name = "About"
+    url = "/about/"
     weight = 30
-
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
 
 [markup]
   [markup.highlight]
-    noClasses = false
+    noClasses = true
     codeFences = true
     guessSyntax = true
     lineNos = false
