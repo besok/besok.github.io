@@ -12,12 +12,7 @@ compilers and DSLs for industrial machines, safety-critical toolchains, and
 Factory Execution Systems that connect the cloud to the shop floor. Based in
 Berlin, mostly writing Rust.
 
-Some things I've made in the open:
-[jsonpath-rust](https://github.com/besok/jsonpath-rust),
-[graphviz-rust](https://github.com/besok/graphviz-rust),
-and [more](https://github.com/besok?tab=repositories).
-
-Off the keyboard, family comes first — always. After that: surfing whenever
+Off the keyboard, family comes first, then surfing whenever
 there's a wave, chess when there isn't, and Quake Live when I need something
 faster than both.
 
