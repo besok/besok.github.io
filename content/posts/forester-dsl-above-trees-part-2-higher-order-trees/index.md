@@ -5,6 +5,10 @@ draft = false
 tags = ['rust', 'behavior-trees', 'dsl', 'orchestration']
 +++
 
+# Forester: The DSL Above Trees — Higher-Order Trees
+
+![Forester](forester.webp)
+
 ## Intro
 
 [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) are a mathematical model used to execute complex flows. [Forester](https://github.com/besok/forester) is an orchestration framework that operates on top of behavior trees, providing a clean and simple way to run tasks that implement the behavior tree concept out of the box.

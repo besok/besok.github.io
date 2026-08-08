@@ -5,6 +5,8 @@ draft = false
 tags = ['rust', 'graphviz', 'visualization']
 +++
 
+# How to use Graphviz in your Rust code
+
 This tutorial is a quick introduction to integrating Graphviz structures in Rust code.
 
 Graphviz is a marvellous format and language for visualizing graph structures. The DOT notation gives you a lot out of the box, making it flexible enough for even the most demanding use cases. You can find plenty of examples here: <https://graphviz.org/gallery/>

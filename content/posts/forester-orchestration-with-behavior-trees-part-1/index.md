@@ -4,8 +4,10 @@ date = 2023-07-17T00:00:00+02:00
 draft = false
 tags = ['rust', 'behavior-trees', 'dsl', 'orchestration']
 +++
-![Forester](forester.webp)
 
+# Forester: Orchestration with Behavior Trees — Simulation
+
+![Forester](forester.webp)
 [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) have become quite popular across engineering over the last several decades, especially in robotics and game design, for orchestrating and composing the logic of independent units (robots in robotics, NPCs in games, etc.).
 
 The reason is clear: they offer a strict and understandable model that makes it easy to separate business logic from flow control. They also work with a small set of logically connected components, which makes the design easier and, in turn, relatively easy to maintain and develop.
