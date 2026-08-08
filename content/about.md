@@ -9,8 +9,8 @@ title: "About"
 Compilers & DSLs for industrial machines. Safety-critical toolchains.
 Factory Execution Systems from cloud to shop floor.
 
-Family first. Surf when there's a wave, chess when there isn't. Quake Live
-when I need something faster than both.
+Devoted to my family first and foremost. I love chasing waves on surf trips whenever I can get away, but on a quiet day at home, 
+it's chess. And when I need to dial up the intensity, it's Quake Live.
 
 ## Find me
 
