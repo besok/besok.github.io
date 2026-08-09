@@ -65,7 +65,7 @@ If the automated placement for Batten 1 fails, we can't always just swap that si
 Instead, when we mutate the graph, we might need to pull that replaced Operator Task out of the parallel block entirely. We can move the manual operation to happen *before* the split, effectively making the operator step the new split point for the remaining automated actions:
 
 ```
-                          /-> [ Place Batten 2 ] -\
+                                           /-> [ Place Batten 2 ] -\
 [ a ] -> [ OP_Task: Place Batten 1 ] (Split)                        -> [ c ]
                                            \-> [ Place Batten 3 ] -/
 ```
