@@ -1,6 +1,6 @@
 +++
 title = 'Rethinking "Lights Out": What If We Architected Humans as Exception Handlers?'
-date = 2026-02-10T00:00:00+01:00
+date = 2026-08-09T00:00:00+01:00
 draft = false
 tags = ['manufacturing', 'smart-factory', 'architecture', 'hitl', 'mes']
 +++
