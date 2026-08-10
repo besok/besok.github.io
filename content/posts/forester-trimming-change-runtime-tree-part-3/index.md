@@ -47,7 +47,7 @@ It can be useful to alter data in the Blackboard or perform some changes during 
 
 ## How it works
 
-A short introduction to **trimming** (as defined in the framework) is available in the [book](https://forester-bt.github.io/forester/trimming.html).
+A short introduction to **trimming** (as defined in the framework) is available in the [book](https://forester-bt.github.io/learn/trimming.html).
 
 Forester provides a so-called **Trimmer**, which is a queue of tasks. Between ticks, the engine pulls a task, validates it, and performs one of these actions:
 
@@ -389,6 +389,6 @@ This feature can be a foundation for an entire layer of research, optimization, 
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Documentation](https://forester-bt.github.io/forester/trimming.html)
-- [Sources from article](https://github.com/besok/forester-examples/tree/main/trimming)
+- [Documentation](https://forester-bt.github.io/learn/trimming.html)
+- [Sources from article](https://github.com/forester-bt/learn/tree/main/examples/trimming)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))

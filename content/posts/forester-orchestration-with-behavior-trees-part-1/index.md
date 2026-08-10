@@ -24,7 +24,7 @@ To that end, the framework provides a DSL above the trees, allowing you to write
 
 The framework is written in Rust and intended to be used in a Rust environment. However, there are ways to implement trees and action behavior without writing code directly — for example, using HTTP services. Another approach is to simulate the actions of a given tree, which is what this article describes.
 
-A detailed description of the framework is available on [GitHub](https://forester-bt.github.io/forester/).
+A detailed description of the framework is available on [GitHub](https://forester-bt.github.io/learn/).
 
 ## F-tree
 
@@ -84,7 +84,7 @@ The definitions without a body are the actions that need to be implemented.
 
 The F-tree lets you use simple tree definitions, isolate code, and reduce redundancy when creating trees.
 
-A complete description of the language's features is available on [GitHub](https://forester-bt.github.io/forester/intro_lang.html).
+A complete description of the language's features is available on [GitHub](https://forester-bt.github.io/learn/intro_lang.html).
 
 ## Simulation
 

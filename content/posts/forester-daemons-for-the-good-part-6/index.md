@@ -11,7 +11,7 @@ tags = ['rust', 'behavior-trees', 'orchestration', 'robotics', 'daemon']
 
 ## Intro
 
-[Forester](https://forester-bt.github.io/forester/) is an orchestration framework that relies on behavior trees as a core concept. On top of the trees, Forester provides a set of tools to make behavior trees more flexible and powerful, including higher-order trees, tree trimming, remote actions, and more.
+[Forester](https://forester-bt.github.io/learn/) is an orchestration framework that relies on behavior trees as a core concept. On top of the trees, Forester provides a set of tools to make behavior trees more flexible and powerful, including higher-order trees, tree trimming, remote actions, and more.
 
 [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) are a powerful tool, providing a solid foundation for a wide range of tasks.
 
@@ -492,7 +492,7 @@ Nevertheless, they bring hidden logic into the system and can be a source of res
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Book about Forester](https://forester-bt.github.io/forester/intro.html)
+- [Book about Forester](https://forester-bt.github.io/learn/intro.html)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))
-- [Sources from article](https://github.com/forester-bt/forester-examples/tree/main/daemons/simple_daemon)
+- [Sources from article](https://github.com/forester-bt/learn/tree/main/examples/daemons/simple_daemon)
 - [Daemon](https://en.wikipedia.org/wiki/Daemon_(computing))

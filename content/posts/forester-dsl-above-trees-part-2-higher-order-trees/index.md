@@ -17,7 +17,7 @@ Although the core concept under the hood is behavior trees, the framework also p
 
 This article sheds some light on why and how f-tree can be useful, especially when it comes to code deduplication.
 
-The [language](https://forester-bt.github.io/forester/intro_lang.html) itself is fairly simple and can be explored quickly.
+The [language](https://forester-bt.github.io/learn/intro_lang.html) itself is fairly simple and can be explored quickly.
 
 A few features that motivated the creation of the language:
 
@@ -219,6 +219,6 @@ The approach is simple but can bring benefits in terms of quality and readabilit
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Language syntax](https://forester-bt.github.io/forester)
-- [Sources from article](https://github.com/besok/forester-examples/tree/main/ho_article)
+- [Language syntax](https://forester-bt.github.io/learn)
+- [Sources from article](https://github.com/forester-bt/learn/tree/main/examples/ho_article)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))

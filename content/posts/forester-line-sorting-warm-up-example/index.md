@@ -212,6 +212,6 @@ impl Impl for Place {
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Book about Forester](https://forester-bt.github.io/forester/intro.html)
+- [Book about Forester](https://forester-bt.github.io/learn/intro.html)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))
-- [Sources for article](https://github.com/forester-bt/examples/tree/main/example1dtext)
+- [Sources for article](https://github.com/forester-bt/learn/tree/main/examples/example1dtext)

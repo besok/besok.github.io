@@ -29,7 +29,7 @@ This article provides an example of how to use it in practice.
 
 The communication protocol is HTTP REST with JSON data passing through. It is fairly convenient and easy to trace, though the performance leaves something to be desired.
 
-The engine provides a specific type of `Action` — namely `Action::Remote`. Details can be found in the [docs](https://forester-bt.github.io/forester/r_actions.html#remote-actions).
+The engine provides a specific type of `Action` — namely `Action::Remote`. Details can be found in the [docs](https://forester-bt.github.io/learn/r_actions.html#remote-actions).
 
 The library uses `reqwest` to perform a blocking POST request to the service, expecting a specific contract to be fulfilled.
 
@@ -247,8 +247,8 @@ Forester remote actions are a powerful way to distribute tasks across multiple m
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Language syntax](https://forester-bt.github.io/forester/syntax.html)
-- [HTTP server](https://forester-bt.github.io/forester/engine.html#http-server)
-- [Remote actions](https://forester-bt.github.io/forester/rem_action.html)
-- [Sources from article](https://github.com/besok/forester-examples/tree/main/remote_action/scenario)
+- [Language syntax](https://forester-bt.github.io/learn/syntax.html)
+- [HTTP server](https://forester-bt.github.io/learn/engine.html#http-server)
+- [Remote actions](https://forester-bt.github.io/learn/rem_action.html)
+- [Sources from article](https://github.com/forester-bt/learn/tree/main/examples/remote_action/scenario)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))

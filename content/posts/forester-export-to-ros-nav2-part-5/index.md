@@ -11,7 +11,7 @@ tags = ['rust', 'behavior-trees', 'robotics', 'ros', 'navigation']
 
 ## Intro
 
-[Forester](https://forester-bt.github.io/forester/) is an orchestration framework with behavior trees at its core. On top of the trees, Forester provides a set of tools to make behavior trees more flexible and powerful, including higher-order trees, tree trimming, remote actions, and more.
+[Forester](https://forester-bt.github.io/learn/) is an orchestration framework with behavior trees at its core. On top of the trees, Forester provides a set of tools to make behavior trees more flexible and powerful, including higher-order trees, tree trimming, remote actions, and more.
 
 [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control)) are a powerful tool, providing a solid foundation for a wide range of tasks. It's no surprise that behavior trees are widely used in robotics.
 
@@ -317,8 +317,8 @@ This article describes the process of exporting behavior trees from Forester to 
 ## Links
 
 - [Forester](https://github.com/besok/forester)
-- [Language syntax](https://forester-bt.github.io/forester/ros_nav2.html)
+- [Language syntax](https://forester-bt.github.io/learn/ros_nav2.html)
 - [Behavior trees](https://en.wikipedia.org/wiki/Behavior_tree_(artificial_intelligence,_robotics_and_control))
-- [Sources from article](https://github.com/forester-bt/forester-examples/tree/main/export_ros_nav)
+- [Sources from article](https://github.com/forester-bt/learn/tree/main/examples/export_ros_nav)
 - [ROS](https://docs.ros.org/)
 - [ROS Nav2](https://navigation.ros.org/index.html)
