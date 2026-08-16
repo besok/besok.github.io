@@ -357,7 +357,7 @@ pub fn appendBuggy(self: *Iter, v: *Value, path: []const u8) !void {
 
 This leaks in a way distinct from case one: `iter.deinit()` runs fine, it just never sees this particular string.
 
-**Fixii:
+**Fix**:
 
 ```zig
 const duped = try self.allocator.dupe(u8, path);
