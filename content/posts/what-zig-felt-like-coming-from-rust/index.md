@@ -18,9 +18,11 @@ lighter-weight, and steadily earning its place among the languages people take s
 I spent time with C earlier in my career, so the comparison always felt like it would be interesting to make.
 
 One caveat worth stating up front: my experience with Zig begins with this project.
-So some of the decisions I made along the way were almost certainly not the optimal ones,
+Some of the observations will look naive and obvious for the people who work with Zig on daily basis and 
+some of the decisions I made along the way were almost certainly not the optimal ones,
 they were shaped more by habits carried over from Rust than by deep Zig idiom.
 That's fine, everyone has to start somewhere, and in the meantime I'm leaning on whatever cross-language intuition I've built up over the years, for better or worse.
+
 
 To make the comparison fair, I decided to reimplement something I'd already built in Rust,
 not a toy, but not a sprawling project either, and ideally something the community could actually use.
@@ -34,7 +36,7 @@ The first thing that caught me off guard — and honestly, who would've expected
 
 The first real lesson here was `build.zig`, which handles this with surprising ease. I eventually settled on this setup:
 
-```text
+```shell
 zig build test                                              # run all tests
 zig build test -Dfilter="filter match function basic"       # run one test
 zig build test -Ddebug-query=true                           # all tests with debug
@@ -67,7 +69,7 @@ Here's the actual difference, side by side:
 
 Rust (`src/`):
 
-```text
+```shell
 src/
 ├── lib.rs
 ├── parser.rs
@@ -95,7 +97,7 @@ src/
 
 Zig (`src/`):
 
-```text
+```shell
 src/
 ├── root.zig
 ├── parser.zig
@@ -133,7 +135,7 @@ Rust is technically an imperative language, but it draws heavily on functional c
 
 I knew going in that I wouldn't be able to bring all of this to Zig, but I hoped I could at least preserve the core concepts. In practice, where Rust leans on immutability and combinators, Zig pushed me toward in-place mutation and the pattern most native to the imperative world.
 
-Where the two stay close: sum types.
+Where the two stay close: **sum types**.
 
 Pure and direct in Rust:
 
@@ -168,7 +170,7 @@ pub fn query(node: anytype, iteration: *JsonPathIter) !void {
 }
 ```
 
-Recursion holds up on both sides too.
+**Recursion holds up on both sides too**.
 
 Rust:
 
@@ -197,7 +199,7 @@ fn collectDescendants(allocator, value: *std.json.Value, path, out) !void {
 But the language quickly forces you to diverge from the functional style, mostly because you're now dealing with allocators directly,
 and a genuinely pure functional approach means constantly constructing new structures. That's either expensive in memory or expensive in the manual bookkeeping needed to avoid it.
 
-Mutation vs. immutable monad is the core difference.
+**Mutation vs. immutable monad is the core difference**.
 
 Rust does a straightforward monadic transformation:
 
@@ -223,7 +225,7 @@ pub fn queryName(name: []const u8, iteration: *q.JsonPathIter) !void {
 }
 ```
 
-`reduce` vs. `fork`.
+**Reduce vs Fork**.
 
 Rust:
 
@@ -238,7 +240,7 @@ var lhs_branch = try iter.fork();   // deep copy of cursor state
 defer lhs_branch.deinit();          // then discarded
 ```
 
-Combinators vs. loops.
+**Combinators vs. loops**.
 
 Rust:
 
@@ -276,11 +278,11 @@ try iter.append(&root, "$['a']");
 // BUG: no iter.deinit()
 ```
 
-Caught by: `MemoryLeakDetected`, pointing at the `dupe` call inside `append`.
+**Caught by**: `MemoryLeakDetected`, pointing at the `dupe` call inside `append`.
 
-Fix: `defer iter.deinit();` right after init.
+**Fix**: `defer iter.deinit();` right after init.
 
-Rust: `Drop` runs automatically at scope end, so this specific bug simply doesn't exist. Though technically, leaks are still possible in Rust like `Rc` reference cycles, or an explicit `Box::leak` so "never leaks" isn't a hard guarantee, just something you'd have to go out of your way to trigger.
+**Rust**: `Drop` runs automatically at scope end, so this specific bug simply doesn't exist. Though technically, leaks are still possible in Rust like `Rc` reference cycles, or an explicit `Box::leak` so "never leaks" isn't a hard guarantee, just something you'd have to go out of your way to trigger.
 
 ### Memory leak: deinit skipped on error path
 
@@ -293,11 +295,11 @@ fn build(json: *Value, a: Allocator) !q.JsonPathIter {
 }
 ```
 
-Caught by: `FailingAllocator{ .fail_index = 1 }`, which forces the second append into `MemoryLeakDetected`.
+**Caught by**: `FailingAllocator{ .fail_index = 1 }`, which forces the second append into `MemoryLeakDetected`.
 
-Fix: `errdefer iter.deinit();` right after init.
+**Fix**: `errdefer iter.deinit();` right after init.
 
-Rust: truly eliminated. `Drop::drop` fires unconditionally on any scope exit, including early returns from `?`.
+**Rust**: truly eliminated. `Drop::drop` fires unconditionally on any scope exit, including early returns from `?`.
 
 ### Memory corruption: deinit called twice
 
@@ -326,9 +328,9 @@ fn processAll(json: *Value, queries: [][]const u8, a: Allocator) !void {
 }
 ```
 
-Caught by: running under `std.testing.allocator`, which fails on the second query's `cache.items[0].deinit()` during `processAll`'s cleanup, `DoubleFree` pointing at both free sites, confirming this is a cross-function ownership bug, not a single-line typo.
+**Caught by**: running under `std.testing.allocator`, which fails on the second query's `cache.items[0].deinit()` during `processAll`'s cleanup, `DoubleFree` pointing at both free sites, confirming this is a cross-function ownership bug, not a single-line typo.
 
-Fix: only one layer may own the value. Since `cache` outlives `cacheAndLog`, ownership belongs to layer three; layer two must not `defer deinit` after handing it off:
+**Fix**: only one layer may own the value. Since `cache` outlives `cacheAndLog`, ownership belongs to layer three; layer two must not `defer deinit` after handing it off:
 
 ```zig
 fn cacheAndLog(json: *Value, qstr: []const u8, a: Allocator,
@@ -339,7 +341,7 @@ fn cacheAndLog(json: *Value, qstr: []const u8, a: Allocator,
 }
 ```
 
-Rust: this exact shape can't compile. `cache.push(result)` moves `result` — after that line, `result` no longer exists as a usable binding, so there's no way to later call `drop(result)` by accident.
+**Rust**: this exact shape can't compile. `cache.push(result)` moves `result` — after that line, `result` no longer exists as a usable binding, so there's no way to later call `drop(result)` by accident.
 
 ### Memory corruption: orphaned allocation when moving into a struct fails
 
@@ -351,11 +353,11 @@ pub fn appendBuggy(self: *Iter, v: *Value, path: []const u8) !void {
 }
 ```
 
-Caught by: `FailingAllocator{ .fail_index = 1 }` failing the array's growth (the second allocation), orphaning `duped` (the first allocation).
+**Caught by**: `FailingAllocator{ .fail_index = 1 }` failing the array's growth (the second allocation), orphaning `duped` (the first allocation).
 
 This leaks in a way distinct from case one: `iter.deinit()` runs fine, it just never sees this particular string.
 
-Fix:
+**Fixii:
 
 ```zig
 const duped = try self.allocator.dupe(u8, path);
@@ -363,7 +365,7 @@ errdefer self.allocator.free(duped);   // only fires if append below fails
 try self.cursors.append(self.allocator, .{ .json = v, .path = duped });
 ```
 
-Rust: true by construction. `Vec::push(item)` moves `item` in and either succeeds or aborts on OOM and there's no fallible push in the standard API that hands you back an "allocated but unlinked" value to accidentally lose. The gap that `errdefer` fills here simply doesn't exist to begin with.
+**Rust**: true by construction. `Vec::push(item)` moves `item` in and either succeeds or aborts on OOM and there's no fallible push in the standard API that hands you back an "allocated but unlinked" value to accidentally lose. The gap that `errdefer` fills here simply doesn't exist to begin with.
 
 ## Libraries and the core API
 

@@ -154,7 +154,7 @@ Schematically, the process looks like this:
 
 The process follows a simple algorithm:
 
-```
+```text
 Check if the flag signals to stop
   If yes, clean resources and stop the tree
   If no, proceed
@@ -169,7 +169,8 @@ Process the data
   If threshold > 50, then result = result - 5
 
 Set a flag that the data has been processed
-`````f-tree
+```
+```f-tree
 import "std::actions"
 
 impl add(q:num);

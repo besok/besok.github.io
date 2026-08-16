@@ -20,6 +20,15 @@
   });
 </script>
 <style>
+  :root {
+    --width: 960px;
+  }
+
+  .highlight pre,
+  .code pre {
+    padding-left: 1rem;
+    box-sizing: border-box;
+  }
   pre code.language-f-tree {
     display: block;
     padding: 1rem;
@@ -35,4 +44,19 @@
   code.language-f-tree .hljs-variable\.constant { color: #6f42c1; }
   code.language-f-tree .hljs-punctuation { color: #24292e; }
   code.language-f-tree .hljs-title\.function\.invoke { color: #6f42c1; }
+
+  @media (prefers-color-scheme: dark) {
+    pre code.language-f-tree {
+      background-color: #282a36;
+      color: #f8f8f2;
+    }
+    code.language-f-tree .hljs-keyword { color: #ff79c6; }
+    code.language-f-tree .hljs-literal { color: #bd93f9; }
+    code.language-f-tree .hljs-number { color: #bd93f9; }
+    code.language-f-tree .hljs-string { color: #f1fa8c; }
+    code.language-f-tree .hljs-comment { color: #6272a4; }
+    code.language-f-tree .hljs-variable\.constant { color: #8be9fd; }
+    code.language-f-tree .hljs-punctuation { color: #f8f8f2; }
+    code.language-f-tree .hljs-title\.function\.invoke { color: #50fa7b; }
+  }
 </style>

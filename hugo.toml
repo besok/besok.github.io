@@ -35,11 +35,15 @@ buildExpired = false
     name = "About"
     url = "/about/"
     weight = 30
+  [[menus.main]]
+    identifier = "rss"
+    name = "rss"
+    url = "/index.xml"
+    weight = 40
 
 [markup]
   [markup.highlight]
-    noClasses = true
+    noClasses = false
     codeFences = true
     guessSyntax = false
     lineNos = false
-    style = "github"
