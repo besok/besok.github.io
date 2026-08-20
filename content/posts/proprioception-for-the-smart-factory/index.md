@@ -152,4 +152,4 @@ Every design choice in this piece has a failure mode on either side of it, and b
 
 Whether a factory has proprioception or not isn't really a question about graph databases or ML matching. It's a question about whether that balance can be sustained by the people actually doing the work, day after day, long after the initial motivation for building it has faded. That's the part I don't have a clean answer to yet and probably the part worth returning to.
 
-_Disclaimer: styling and error handling throughout this article were cleaned up with the help of AI._
+_Disclaimer: Typos and mistakes throughout this article were cleaned up with the help of AI._
