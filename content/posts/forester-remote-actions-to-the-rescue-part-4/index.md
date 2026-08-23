@@ -127,11 +127,11 @@ fn main() {
         RemoteHttpAction::new("http://localhost:10001/move_to".to_string()),
     );
 
-    fb.http_serv(9000);
+    fb.http_serv("127.0.0.1".to_string(), 9001);
 
     let mut forester = fb.build().unwrap();
 
-    println!("{:?}", forester.run());
+    println!("{:?}", forester.run_until(Some(100)));
 }
 ```
 
@@ -145,7 +145,7 @@ async fn main() {
     let routing = Router::new()
         .route("/", get(|| async { "OK" }))
         .route("/calculate", post(handler))
-        .into_make_service::<SocketAddr>();
+        .into_make_service();
 
     axum::Server::bind(&SocketAddr::from(([127, 0, 0, 1], 10000)))
         .serve(routing)
@@ -154,30 +154,36 @@ async fn main() {
 }
 
 async fn handler(Json(req): Json<RemoteActionRequest>) -> impl IntoResponse {
-    let client = ForesterHttpClient::new(req.serv_url.clone());
+    let client = ForesterClient::new(&req.serv_url).unwrap();
+
     client
-        .put("calculated".to_string(), json!(true))
+        .put("calculated", json!(true))
         .await
         .unwrap();
 
-    client.lock("calculated".to_string()).await.unwrap();
+    client.lock("calculated").await.unwrap();
     // imitation of the sync planning process
     tokio::time::sleep(Duration::from_millis(500)).await;
 
-    client.unlock("calculated".to_string()).await.unwrap();
+    client.unlock("calculated").await.unwrap();
 
     client
-        .new_trace_event(req.tick, "Calculated".to_string())
+        .trace("Calculated", req.tick)
         .await
         .unwrap();
 
-    (StatusCode::OK, Json::from(TickResult::Success))
+    (StatusCode::OK, Json(TickResult::Success))
 }
 ```
 
 Python implementation for `move_to`:
 
 ```python
+import json
+from http.server import BaseHTTPRequestHandler, HTTPServer
+
+from forester_client_http import ForesterClient
+
 hostName = "localhost"
 serverPort = 10001
 
@@ -186,27 +192,45 @@ class MyServer(BaseHTTPRequestHandler):
 
     def do_POST(self):
         if self.path == "/move_to":
-            body = self.rfile.read(int(self.headers["Content-Length"]))
-            req = RemoteActionRequest.from_bytes(body)
+            content_length = int(self.headers["Content-Length"])
+            # The body is a RemoteActionRequest:
+            # {"tick": .., "args": [{"name": .., "value": ..}], "serv_url": ..}
+            body = json.loads(self.rfile.read(content_length))
+
+            tick = body["tick"]
+            serv_url = body["serv_url"]
 
             self.send_response(200)
             self.send_header("Content-Type", "application/json;charset=UTF-8")
             self.end_headers()
 
             # pretend that we need to recalculate a route
-            if req.tick == 5:
-                client = ForesterHttpClient(req.serv_url)
+            if tick == 5:
+                client = ForesterClient(serv_url)
                 client.put("calculated", False)
-                client.new_trace_event(req.tick, "Bump!. Recalculate")
+                client.trace("Bump!. Recalculate", tick)
 
             # at this point we arrive to the destination point
-            if req.tick > 10:
+            if tick > 10:
                 self.wfile.write(json.dumps("Success").encode("utf-8"))
             else:
                 self.wfile.write(json.dumps("Running").encode("utf-8"))
 
         else:
             self.send_error(404)
+
+
+if __name__ == "__main__":
+    webServer = HTTPServer((hostName, serverPort), MyServer)
+    print("Server started http://%s:%s" % (hostName, serverPort))
+
+    try:
+        webServer.serve_forever()
+    except KeyboardInterrupt:
+        pass
+
+    webServer.server_close()
+    print("Server stopped.")
 ```
 
 Tracing is simple as well (insignificant parts omitted):
