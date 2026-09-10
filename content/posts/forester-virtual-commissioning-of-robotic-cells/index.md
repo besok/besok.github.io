@@ -36,7 +36,7 @@ The most direct approach is to use an existing Python/C++/Rust framework that re
 
 A behavior tree (BT) is a small set of composable primitives such as sequence, fallback, parallel, and decorators (retry, timeout, inverter) that let you express what must happen, what must remain true, and what to try when it fails.
 
-Forester adds three things that make BTs viable for industrial orchestration rather than just game AI:
+[**Forester**](https://github.com/forester-bt/forester) adds three things that make BTs viable for industrial orchestration rather than just game AI:
 
 1. A typed language and a fast Rust runtime.
 2. A blackboard for shared state, with pointers into it, so values flow between steps by reference.
