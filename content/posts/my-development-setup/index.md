@@ -45,7 +45,7 @@ Next came a terminal multiplexer. I picked [Zellij](https://zellij.dev/) as it h
 
 The core setup seemed easy enough but figuring out how to consolidate it across the several machines led me to the concept of [dotfiles](https://dotfiles.github.io/). The idea is relatively simple: you drop all the configuration files for your environment in a Git repository, and then use symlinks to place them exactly where they need to be. Elegant. Wrap it all in one `install.sh` file and you get a universal method to deploy the setup to any Mac or Linux machine.
 
-My setup with a closer look:
+## My setup with a closer look
 
 **The light theme.** This major transition also inspired me to switch to a light theme.
 
