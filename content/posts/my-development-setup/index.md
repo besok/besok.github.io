@@ -23,7 +23,7 @@ But recently, something has changed. I can't describe it rationally but emotiona
 
 My soul craved something new. Also, seeing PyCharm eating 10GB of my RAM under some load, was definitely not very inspiring.
 
-You can call it irrational (midlife crisis?) but some day I stumbled upon Neovim and then helix. It dawned on me to try them out.
+You can call it irrational (midlife crisis?) but some day I stumbled upon Neovim and then [Helix](https://helix-editor.com/). It dawned on me to try them out.
 
 Also, in the back of my mind, there was a lingering thought that I was missing some details regarding setup, installation or whatever the environment was handling behind the scenes.
 
@@ -72,6 +72,8 @@ My setup with a closer look:
 **Helix built-in navigation.** The flat file manager, grep search are just so fast and intuitive that I quickly switched to using them exclusively.
 
 **Attachable sessions.** Every environment (`rsdev`, `pydev`, or `dev`) runs on a single session, and all reconnects seamlessly attach to that same session.
+
+**Zoxide.** It just works and completely replaces `cd` for the routine operations.
 
 ## What I am still learning / struggling with
 
