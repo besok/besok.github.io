@@ -10,9 +10,6 @@ tags = ['formal-verification', 'automation', 'robotics', 'plc', 'dsl', 'specific
 **Summary.** Technical specifications for robot-cell functions live in text documents and are re-implemented by hand in the design data, the MES, the PLC, and the robot code. This causes ambiguous readings, uncovered edge cases, contradicting rules, and out-of-sync limits. I propose writing the rules once in a typed, executable rule language, analyzing them with a solver, evaluating or generating them in each system, and checking the rule version at runtime. No existing tool covers the whole chain, so the approach needs a custom framework, and a proof of concept (PoC) has to validate it first.
 
 
-I keep returning to one problem in industrial automation: keeping the technical specifications shared by different systems consistent. After some time being in the industry, I believe this is the main composite glue allowing the systems functioning stable and robust.
-
-
 ## Context
 
 A factory line with a set of robotic cells and other machinery (grippers, mount tables, flip gears, etc.). Every cell has up to 5 robot arms. The line is intended to create some product step by step. Every robot arm has a set of functions that it can execute. Every function is a high-level action that composes several simple actions. Examples:
