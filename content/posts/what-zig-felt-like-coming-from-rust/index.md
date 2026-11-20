@@ -63,7 +63,7 @@ In Rust, I tend to reach for folder structure early, almost by default. In Zig, 
 
 That contrast was useful beyond just Zig, because it made me reconsider, even in other languages,
 whether I'm organizing files because the project genuinely needs it, or out of habit.
-It's also a pretty honest way to gauge how big a project actually is: if you can't resist reaching for folders on day one,maybe it's smaller than it feels.
+It's also a pretty honest way to gauge how big a project actually is: if you can't resist reaching for folders on day one, maybe it's smaller than it feels.
 
 Here's the actual difference, side by side:
 
